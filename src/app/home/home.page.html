@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Notes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addNote()">
+        <ion-icon slot="icon-only" name="clipboard"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item button detail *ngFor="let note of notesService.notes" [routerLink]="'/notes/' + note.id" routerDirection="forward">
+      <ion-label *ngIf="note.title === ''">(Untitled)</ion-label>
+      <ion-label>{{ note.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button color="secondary" (click)="addNote()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+</ion-content>
